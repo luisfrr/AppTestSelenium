@@ -1,0 +1,101 @@
+@model SimpleWebApp.Areas.Widgets.Models.AdConfigModel
+
+@{
+  ViewData["Title"] = "Summernote Widget";
+  Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+
+  <div class="col-md-12">
+
+    <div class="card">
+
+      <div class="card-body">
+
+        <div class="card-title">
+
+          <div class="d-flex bd-highlight mb-3">
+
+            <div class="bd-highlight"><h3>Configurate Notes</h3></div>
+
+            <div class="ms-auto bd-highlight">
+
+              <button class="btn btn-lg btn-success" onclick="SummernoteWidget.SaveAdConfing()">
+                <i class="fa fa-save"></i>
+              </button>
+
+              <button class="btn btn-lg btn-primary" onclick="SummernoteWidget.OpenPreview()">
+                <i class="fa fa-eye"></i>
+              </button>
+
+            </div>
+
+          </div>
+          
+        </div>
+
+        <hr />
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <form id="formAdConfigurations">
+
+              <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+              <div class="form-group">
+                <label asp-for="editor" class="control-label"></label>
+                <input asp-for="editor" class="form-control" id="editor" />
+                <span asp-validation-for="editor" class="text-danger"></span>
+              </div>
+
+              <div class="form-group" hidden>
+                <label asp-for="createdAt" class="control-label">Created At</label>
+                <input asp-for="createdAt" class="form-control" type="hidden"/>
+                <span asp-validation-for="createdAt" class="text-danger"></span>
+              </div>
+
+              <div class="form-group" hidden>
+                <label asp-for="createdBy" class="control-label">Created By</label>
+                <input asp-for="createdBy" class="form-control" type="hidden"/>
+                <span asp-validation-for="createdBy" class="text-danger"></span>
+              </div>
+
+              <div class="form-group" hidden>
+                <label asp-for="updatedAt" class="control-label">Updated At</label>
+                <input asp-for="updatedAt" class="form-control" type="hidden"/>
+                <span asp-validation-for="updatedAt" class="text-danger"></span>
+              </div>
+
+              <div class="form-group" hidden>
+                <label asp-for="updatedBy" class="control-label">Updated By</label>
+                <input asp-for="updatedBy" class="form-control" type="hidden"/>
+                <span asp-validation-for="updatedBy" class="text-danger"></span>
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+@section Scripts {
+  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+  <script src="~/lib/summernote/summernote-lite.min.js"></script>
+  <script src="~/lib/summernote/summernote-es-ES.min.js"></script>
+
+  <script src="~/js/areas/widgets/summernoteWidget.min.js"></script>
+  <script src="~/js/areas/widgets/adPreviewModal.min.js"></script>
+}
+

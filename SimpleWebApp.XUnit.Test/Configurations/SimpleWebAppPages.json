@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "Main",
+    "Url": "https://simplewebappselenium.azurewebsites.net/",
+    "PageDomInformation": "MainPage.json"
+  },
+  {
+    "Name": "Register",
+    "Url": "https://simplewebappselenium.azurewebsites.net/Identity/Account/Register",
+    "PageDomInformation": "RegisterPage.json"
+  },
+  {
+    "Name": "Login",
+    "Url": "https://simplewebappselenium.azurewebsites.net/Identity/Account/Login",
+    "PageDomInformation": "LoginPage.json"
+  }
+]

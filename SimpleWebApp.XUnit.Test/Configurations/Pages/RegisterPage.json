@@ -1,0 +1,28 @@
+[
+  {
+    "Name": "Email",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//input[@id='Input_Email']"
+  },
+  {
+    "Name": "Password",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//input[@id='Input_Password']"
+  },
+  {
+    "Name": "Confirm Password",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//input[@id='Input_ConfirmPassword']"
+  },
+  {
+    "Name": "Register Button",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//button[@id='registerSubmit']"
+  },
+  {
+    "Name": "Register Form Error",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//form/div/ul"
+  }
+]
+

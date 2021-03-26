@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "SimpleWebApp.Test": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "PageFilePath": "./Resources/Pages",
+        "SimpleWebAppUrl": "https://localhost:44375/Identity/Account/Register",
+        "Browser": "firefox"
+      },
+      "remoteDebugEnabled": false
+    }
+  }
+}

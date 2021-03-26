@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - SimpleWebApp</title>
+  @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <!-- include summernote lite css -->
+  <link href="~/lib/summernote/summernote-lite.min.css" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="~/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="~/css/site.min.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+      <div class="container">
+        <a class="navbar-brand" asp-area="" asp-page="/Index">SimpleWebApp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+          <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+              <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+            </li>
+            <partial name="_Menu" />
+          </ul>
+          <partial name="_LoginPartial" />
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="container">
+    <main role="main" class="pb-3">
+      @RenderBody()
+    </main>
+  </div>
+
+  <!-- Toast -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
+    <div id="appToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header" id="toastHeader">
+        <i class="fa fa-done bg-success" id="toastIcon">&nbsp;&nbsp;&nbsp;</i>
+        <strong class="me-auto" id="toastTitle"></strong>
+        <small id="toastTime"></small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" id="toastMessage"></div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="app_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" id="modalSize">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal_title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="modal_close"></button>
+        </div>
+        <div class="modal-body" id="modal_body"></div>
+        <div class="modal-footer" id="modal_actions"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-top footer text-muted">
+    <div class="container">
+      &copy; 2021 - SimpleWebApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    </div>
+  </footer>
+
+  <!-- JQuery 3.5.1 -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+  <!-- Block UI -->
+  <script src="~/lib/blockui/blockUI.min.js"></script>
+
+  @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+  <script src="~/js/site.min.js" asp-append-version="true"></script>
+  <script src="~/js/Toast.min.js" asp-append-version="true"></script>
+  <script src="~/js/Modal.min.js" asp-append-version="true"></script>
+
+  @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

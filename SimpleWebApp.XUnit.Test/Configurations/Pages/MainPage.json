@@ -1,0 +1,22 @@
+[
+  {
+    "Name": "Menu Item Register",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//a[contains(@href, '/Identity/Account/Register')]"
+  },
+  {
+    "Name": "Menu Item Login",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//a[contains(@href, '/Identity/Account/Login')]"
+  },
+  {
+    "Name": "Menu Item Home",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "(//a[contains(@href, '/')])[2]"
+  },
+  {
+    "Name": "Profile",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//a[contains(@href, '/Identity/Account/Manage')]"
+  }
+]

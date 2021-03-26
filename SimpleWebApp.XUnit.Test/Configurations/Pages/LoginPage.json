@@ -1,0 +1,27 @@
+[
+  {
+    "Name": "Email",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//input[@id='Input_Email']"
+  },
+  {
+    "Name": "Password",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//input[@id='Input_Password']"
+  },
+  {
+    "Name": "Login Button",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//button[@id='login-submit']"
+  },
+  {
+    "Name": "Login Form Error",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//form/div/ul/li"
+  },
+  {
+    "Name": "Profile",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//a[contains(@href, '/Identity/Account/Manage')]"
+  }
+]
