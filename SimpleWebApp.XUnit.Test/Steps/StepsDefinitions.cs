@@ -2,6 +2,7 @@ using log4net;
 using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
 using SimpleWebApp.XUnit.Test.Common;
+using SimpleWebApp.XUnit.Test.Functions;
 using SimpleWebApp.XUnit.Test.Hooks;
 using TechTalk.SpecFlow;
 
