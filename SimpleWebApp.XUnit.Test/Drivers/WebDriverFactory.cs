@@ -18,26 +18,7 @@ namespace SimpleWebApp.XUnit.Test.Drivers
 
       if (Browsers.FIREFOX.Equals(browser))
       {
-        string path = Directory.GetCurrentDirectory();
-
-        //Give the path of the geckodriver.exe    
-        FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(@"C:\Program Files\Mozilla Firefox\", "geckodriver.exe");
-
-        //Give the path of the Firefox Browser        
-        service.FirefoxBinaryPath = @"C:\Program Files\Mozilla Firefox\firefox.exe";
-
-        FirefoxProfile profile = new FirefoxProfile()
-        {
-          AcceptUntrustedCertificates = true,
-          AssumeUntrustedCertificateIssuer = true,
-        };
-
-        FirefoxOptions options = new FirefoxOptions()
-        {
-          AcceptInsecureCertificates = true
-        };
-
-        driver = new FirefoxDriver(service, options);
+        driver = new FirefoxDriver();
       } 
       else if (Browsers.CHROME.Equals(browser))
       {
