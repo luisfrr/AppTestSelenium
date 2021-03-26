@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using Xunit;
 
-namespace SimpleWebApp.XUnit.Test.Steps
+namespace SimpleWebApp.XUnit.Test.Functions
 {
   public class SeleniumFunctions
   {
