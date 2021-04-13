@@ -74,6 +74,13 @@ namespace SimpleWebApp
                     areaName: "Widgets",
                     pattern: "Widgets/{controller=Summernote}/{action=Index}/{id?}"
                 );
+
+                endpoints.MapAreaControllerRoute(
+                    name: "Catalogs",
+                    areaName: "Catalogs",
+                    pattern: "Catalogs/{controller}/{action}/{id?}"
+                );
+
             });
 
         }

@@ -10,7 +10,8 @@ var ModalTypeActions = function () {
     LIGHT: "btn btn-light",
     DARK: "btn btn-dark",
     LINK: "btn btn-link",
-    CLOSE_MODAL: "btn btn-secondary"
+    CLOSE_MODAL: "btn btn-secondary",
+    CANCEL_CONFIRM_MODAL: "btn btn-danger"
   };
 
 }();
@@ -38,11 +39,13 @@ var AppModal = function () {
   var modalActions = "#modal_actions";
   var buttonModalClose = "#modal_close ";
   var actionModalClose = "#actionModalClose";
+  var actionConfirmModalCancel = "#actionConfirmModalCancel";
 
   let config = {
     appModaSize: AppModalSizes.DEFAULT,
     url: "",
     title: "",
+    message: "",
     bodyHtml: "",
     scroll: false,
     actions: [],
@@ -52,8 +55,8 @@ var AppModal = function () {
 
   var initModal = function () {
     let config = {
-      backdrop: true,
-      keyboard: true,
+      backdrop: 'static',
+      keyboard: false,
       focus: true
     };
 
@@ -102,6 +105,7 @@ var AppModal = function () {
   var setActions = function () {
 
     $(modalActions).html('');
+    $(modalActions).removeClass('d-flex justify-content-center');
 
     if (config.actions !== null && config.actions.length > 0)
       $(modalActions).removeClass().addClass('modal-footer');
@@ -109,8 +113,21 @@ var AppModal = function () {
       $(modalActions).removeClass();
 
     config.actions.forEach(function(action) {
-      if (action.type !== ModalTypeActions.CLOSE_MODAL)
-        $(modalActions).append(`<button type="button" class="${action.type}" onclick="${action.onClickFunction}"> ${action.name} </button>`);
+      if (action.type !== ModalTypeActions.CLOSE_MODAL && action.type !== ModalTypeActions.CANCEL_CONFIRM_MODAL) {
+        $(modalActions).append(`<button type="button" id="modalAction_${action.name}" class="${action.type}"> ${action.name} </button>`);
+        $('#modalAction_' + action.name).unbind();
+        if (action.onClickFunction !== null && typeof action.onClickFunction === 'function') {
+          $('#modalAction_' + action.name).on('click', action.onClickFunction);
+        }
+      }
+      else if (action.type == ModalTypeActions.CANCEL_CONFIRM_MODAL) {
+        $(modalActions).append(`<button type="button" class="${action.type}" id="actionConfirmModalCancel" data-bs-dismiss="modal"> ${action.name} </button>`);
+
+        $(actionConfirmModalCancel).unbind();
+        if (config.onCloseModalFunction !== null && typeof config.onCloseModalFunction === 'function') {
+          $(actionConfirmModalCancel).on('click', config.onCloseModalFunction);
+        }
+      }
       else {
         $(modalActions).append(`<button type="button" class="${action.type}" id="actionModalClose" data-bs-dismiss="modal"> ${action.name} </button>`);
 
@@ -128,14 +145,10 @@ var AppModal = function () {
   };
 
   var loadModalBody = function () {
-    if (config.url !== undefined || config.url !== null || config.url !== '') {
+    if (config.url != undefined) {
 
       $(modalBody).load(config.url, function (responseText, textStatus, req) {
-
-        //console.log(responseText);
-        //console.log(textStatus);
-        //console.log(req);
-
+        
         if (textStatus !== 'error') {
           setOnCloseFunction();
           setScrollable();
@@ -152,10 +165,6 @@ var AppModal = function () {
     else {
 
       $(modalBody).html(config.bodyHtml).promise().done(function (responseText, textStatus, req) {
-
-        //console.log(responseText);
-        //console.log(textStatus);
-        //console.log(req);
 
         if (textStatus !== 'error') {
           setOnCloseFunction();
@@ -189,6 +198,40 @@ var AppModal = function () {
 
     hide: function () {
       myModal.hide();
+    },
+
+    confirmModal: function (options) {
+      var bodyHtml = `
+        <div class="row">
+          <div class="col-md-12 text-center confirm-body">
+            <i class="fa fa-exclamation-triangle fa-3x text-warning mb-3"></i>
+            <h5><b>${options.title}</b></h5>
+            <p>${options.message}</p>
+          </div>
+        </div>
+      `;
+
+      let optionsConfirm = {
+        appModaSize: options.appModaSize,
+        title: "",
+        bodyHtml: bodyHtml,
+        scroll: true,
+        actions: options.actions,
+        onCreateModalFunction: options.onCreateModalFunction,
+        onCloseModalFunction: options.onCloseModalFunction
+      }
+
+      if (optionsConfirm !== null)
+        config = optionsConfirm;
+
+      setModalSize();
+      setModalTitle();
+      loadModalBody();
+      initModal();
+
+      $(modalActions).addClass('d-flex justify-content-center');
+
+      myModal.show();
     }
 
   };

@@ -1,0 +1,97 @@
+@{
+  ViewData["Title"] = "Beer Catalog";
+  Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+
+  <div class="col-md-12">
+
+    <div class="card">
+
+      <div class="card-header bg-light text-dark">
+        <div class="d-flex align-items-end">
+          <div class="bd-highlight">
+            <h4 class="card-title">BEER CATALOG</h4>
+          </div>
+          <div class="ms-auto bd-highlight">
+            <button class="btn btn-success" onclick="Beer.OpenModalForm(0)">
+              <i class="fa fa-plus-circle"></i> Add Beer
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+
+        <div class="row mt-3">
+          <div class="accordion" id="filters">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="accordion-header-filters">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-filters" aria-expanded="true" aria-controls="accordion-filters">
+                  <b>Filter options</b>
+                </button>
+              </h2>
+              <div id="accordion-filters" class="accordion-collapse collapse hide" aria-labelledby="accordion-header-filters" data-bs-parent="filters">
+                <div class="accordion-body">
+
+                  <div class="row align-items-end" id="divFilters">
+
+                    <div class="col-3">
+                      <div class="form-group">
+                        <label for="NameFilter" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="NameFilter">
+                      </div>
+                    </div>
+
+                    <div class="col-3">
+                      <div class="form-group">
+                        <label for="BrandFilter" class="form-label">Brand</label>
+                        <input type="text" class="form-control" id="BrandFilter">
+                      </div>
+                    </div>
+
+                    <div class="col-2 d-flex justify-content-end">
+                      <button type="button" class="btn btn-outline-dark" onclick="Beer.ClearFilter()"
+                               data-bs-toggle="tooltip" data-bs-placement="top" title="Clear Filters">
+                        <i class="fa fa-eraser"></i>
+                      </button>
+                      <button type="button" class="btn btn-outline-primary" onclick="Beer.Search()"
+                               data-bs-toggle="tooltip" data-bs-placement="top" title="Filter"
+                                style="margin-left:16px !important;">
+                        <i class="fa fa-filter"></i>
+                      </button>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+
+          <div class="col-12">
+
+            <table id="gridBeer"
+                   class="table table-hover"
+                   cellspacing="0" style="width:100%">
+            </table>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+@section Scripts {
+  <script src="~/js/areas/catalogs/beer.min.js"></script>
+}

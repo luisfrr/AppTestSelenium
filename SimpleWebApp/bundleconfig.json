@@ -3,70 +3,72 @@
     "outputFileName": "wwwroot/js/site.min.js",
     "inputFiles": [
       "wwwroot/js/site.js"
-    ],
-    "sourceMap": true
+    ]
   },
   {
     "outputFileName": "wwwroot/js/Modal.min.js",
     "inputFiles": [
       "wwwroot/js/Modal.js"
-    ],
-    "sourceMap": true
-  },
-  {
-    "outputFileName": "wwwroot/js/Toast.min.js",
-    "inputFiles": [
-      "wwwroot/js/Toast.js"
-    ],
-    "sourceMap": true
+    ]
   },
   {
     "outputFileName": "wwwroot/lib/blockui/blockUI.min.js",
     "inputFiles": [
       "wwwroot/lib/blockui/blockUI.js"
-    ],
-    "sourceMap": true
+    ]
   },
   {
     "outputFileName": "wwwroot/lib/summernote/summernote-es-ES.min.js",
     "inputFiles": [
       "wwwroot/lib/summernote/summernote-es-ES.js"
-    ],
-    "sourceMap": true
+    ]
   },
   {
     "outputFileName": "wwwroot/lib/summernote/summernote-lite.min.css",
     "inputFiles": [
       "wwwroot/lib/summernote/summernote-lite.css"
-    ],
-    "sourceMap": true
+    ]
   },
   {
     "outputFileName": "wwwroot/lib/summernote/summernote-lite.min.js",
     "inputFiles": [
       "wwwroot/lib/summernote/summernote-lite.js"
-    ],
-    "sourceMap": true
+    ]
   },
   {
     "outputFileName": "wwwroot/css/site.min.css",
     "inputFiles": [
       "wwwroot/css/site.css"
-    ],
-    "sourceMap": true
+    ]
   },
   {
     "outputFileName": "wwwroot/js/areas/widgets/adPreviewModal.min.js",
     "inputFiles": [
       "wwwroot/js/areas/widgets/adPreviewModal.js"
-    ],
-    "sourceMap": true
+    ]
   },
   {
     "outputFileName": "wwwroot/js/areas/widgets/summernoteWidget.min.js",
     "inputFiles": [
       "wwwroot/js/areas/widgets/summernoteWidget.js"
-    ],
-    "sourceMap": true
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/areas/catalogs/beer.min.js",
+    "inputFiles": [
+      "wwwroot/js/areas/catalogs/beer.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/areas/catalogs/beerFormModal.min.js",
+    "inputFiles": [
+      "wwwroot/js/areas/catalogs/beerFormModal.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Toast.min.js",
+    "inputFiles": [
+      "wwwroot/js/Toast.js"
+    ]
   }
 ]
