@@ -1,3 +1,4 @@
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -33,12 +34,12 @@ namespace SimpleWebApp.Areas.Catalogs.Controllers
 
     // POST: Catalogs/Beer/GetListBeers
     [HttpPost]
-    public JsonResult GetListBeers(DataTableParamModel<BeerClientModel> dataTableParam)
+    public JsonResult GetListBeers(DataTableParamModel<BeerParamModel> dataTableParam)
     {
       
       var listBeers = FindAllBeers(dataTableParam);
 
-      return Json(new Response<IEnumerable<BeerClientModel>>(ResponseStatus.SUCCESS,
+      return Json(new Response<IEnumerable<BeerParamModel>>(ResponseStatus.SUCCESS,
         ResponseMessages.SUCCESS_REQUESTS, listBeers));
     }
 
@@ -48,7 +49,7 @@ namespace SimpleWebApp.Areas.Catalogs.Controllers
       var beer = FindBeerById(id ?? 0);
 
       if (beer == null)
-        beer = new BeerClientModel();
+        beer = new BeerParamModel();
 
       return PartialView(beer);
     }
@@ -61,14 +62,22 @@ namespace SimpleWebApp.Areas.Catalogs.Controllers
       try
       {
         bool isUpdate = false;
-        int Id = 0;
 
-        if (!string.IsNullOrEmpty(collection["Id"].ToString()))
-          Id = Convert.ToInt32(collection["Id"].ToString());
+        var beerParam = new BeerParamModel()
+        {
+          Id = !string.IsNullOrEmpty(collection["Id"].ToString()) ? Convert.ToInt32(collection["Id"].ToString()): 0,
+          Name = collection["Name"].ToString(),
+          Brand = collection["Brand"].ToString(),
+          Alcohol = !string.IsNullOrEmpty(collection["Alcohol"].ToString()) ? Convert.ToDecimal(collection["Alcohol"].ToString()) : 0,
+        };
+
+        if(!beerParam.IsValid())
+          return Json(new Response<List<ValidationFailure>>(ResponseStatus.WARNING,
+            ResponseMessages.WARNING_VALIDATION, beerParam.GetValidationErrors()));
 
         var user = await userManager.GetUserAsync(User);
 
-        var beer = dbContext.Beers.FirstOrDefault(x => x.Id == Id);
+        var beer = dbContext.Beers.FirstOrDefault(x => x.Id == beerParam.Id);
 
         if (beer == null)
         {
@@ -149,7 +158,7 @@ namespace SimpleWebApp.Areas.Catalogs.Controllers
       }
     }
 
-    private IEnumerable<BeerClientModel> FindAllBeers(DataTableParamModel<BeerClientModel> dataTableParam)
+    private IEnumerable<BeerParamModel> FindAllBeers(DataTableParamModel<BeerParamModel> dataTableParam)
     {
       var filters = dataTableParam.filters;
       var order = dataTableParam.GetOrder();
@@ -158,7 +167,7 @@ namespace SimpleWebApp.Areas.Catalogs.Controllers
         .Where(x => x.IsDeleted == false)
         .Where(x => string.IsNullOrEmpty(filters.Name) || x.Name.ToUpper().Contains(filters.Name.ToUpper()))
         .Where(x => string.IsNullOrEmpty(filters.Brand) || x.Brand.ToUpper().Contains(filters.Brand.ToUpper()))
-        .Select(x => new BeerClientModel()
+        .Select(x => new BeerParamModel()
         {
           Id = x.Id,
           Name = x.Name,
@@ -194,10 +203,10 @@ namespace SimpleWebApp.Areas.Catalogs.Controllers
       return beerList;
     }
 
-    private BeerClientModel FindBeerById(int id)
+    private BeerParamModel FindBeerById(int id)
     {
       var beer = dbContext.Beers.Where(x => x.IsDeleted == false && x.Id == id)
-        .Select(x => new BeerClientModel()
+        .Select(x => new BeerParamModel()
         {
           Id = x.Id,
           Name = x.Name,

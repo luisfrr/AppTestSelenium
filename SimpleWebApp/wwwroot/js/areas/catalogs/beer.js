@@ -1,6 +1,7 @@
 var Beer = function () {
   var UrlController = "/Catalogs/Beer/";
   var gridSelector = "#gridBeer ";
+  var validatorSelector = "#BeerValidator";
   var $grid = null;
 
   var configTable = {
@@ -93,11 +94,14 @@ var Beer = function () {
         }
         else if (response.status === ResponseStatus.FATAL_ERROR) {
           Toast.fatalError(response.status, response.message + '<br/>' + response.details);
-        } else {
+        } else if (response.status === ResponseStatus.WARNING) {
+          Site.showValidatorErrors(validatorSelector, response.data);
+          return;
+        } else if (response.status === ResponseStatus.SUCCESS) {
           Toast.success(response.status, response.message);
         }
 
-        AppModal.hide();
+        AppModal.hide();        
       }
     });
   };
