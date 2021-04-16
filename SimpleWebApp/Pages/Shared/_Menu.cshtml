@@ -4,15 +4,19 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Widgets</a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" asp-area="Widgets" asp-controller="Summernote" asp-action="Index">Summernote</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Separated link</a></li>
-      </ul>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-    </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Widgets</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" asp-area="Widgets" asp-controller="Summernote" asp-action="Index">Summernote</a></li>
+    </ul>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Catalogs</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" asp-area="Catalogs" asp-controller="Beer" asp-action="Index">Beers</a></li>
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+  </li>
 }

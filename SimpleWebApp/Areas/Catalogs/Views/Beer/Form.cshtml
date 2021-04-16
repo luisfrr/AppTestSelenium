@@ -1,0 +1,35 @@
+@model SimpleWebApp.Areas.Catalogs.Models.BeerParamModel
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-12">
+      <form id="BeerForm">
+        <div asp-validation-summary="ModelOnly" id="BeerValidator" class="text-danger"></div>
+        @Html.HiddenFor(x => x.Id)
+        @Html.AntiForgeryToken()
+       
+        <div class="form-group m-2">
+          <label asp-for="Name" class="control-label">Name</label>
+          @Html.TextBoxFor(x => x.Name, new { @class="form-control" })
+          <span asp-validation-for="Name" class="text-danger"></span>
+
+        </div>
+        <div class="form-group m-2">
+          <label asp-for="Brand" class="control-label">Brand</label>
+          @Html.TextBoxFor(x => x.Brand, new { @class = "form-control" })
+          <span asp-validation-for="Brand" class="text-danger"></span>
+        </div>
+        <div class="form-group m-2">
+          <label asp-for="Alcohol" class="control-label">Alcohol</label>
+          @Html.TextBoxFor(x => x.Alcohol, new { @class = "form-control", @type = "number" })
+          <span asp-validation-for="Alcohol" class="text-danger"></span>
+        </div>
+      </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

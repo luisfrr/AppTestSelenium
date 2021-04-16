@@ -34,8 +34,26 @@ var Site = function () {
       blockUI();
     },
 
-    completeRequest: function() {
+    completeRequest: function () {
       $.unblockUI();
+    },
+
+    showValidatorErrors: function (selector, listErrors) {
+      $(selector).html('');
+
+      var items = '';
+
+      listErrors.forEach(function (error) {
+        items = items + `<li class="list-group-item">${error.errorMessage}</li>`;
+      });
+
+      var listGroup = `
+        <ul class="list-group list-group-flush">
+         ${items} 
+        </ul>
+      `;
+
+      $(selector).html(listGroup);
     }
 
   };

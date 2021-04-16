@@ -48,7 +48,7 @@ var Toast = function () {
 
     error: function (title, message, autoHide = false) {
       $(toastHeader).removeClass().addClass('toast-header bg-danger');
-      $(iconSelector).removeClass().addClass('fa fa-bug text-white');
+      $(iconSelector).removeClass().addClass('fa fa-exclamation text-white');
       $(titleSelector).html(title.toUpperCase()).removeClass().addClass("me-auto text-white");
       $(timeSelector).html('');
       $(messageSelector).html(message);
@@ -68,7 +68,7 @@ var Toast = function () {
 
     fatalError: function (title, message, autoHide = false) {
       $(toastHeader).removeClass().addClass('toast-header bg-danger');
-      $(iconSelector).removeClass().addClass('fa fa-exclamation text-white');
+      $(iconSelector).removeClass().addClass('fa fa-bug text-white');
       $(titleSelector).html(title.toUpperCase()).removeClass().addClass("me-auto text-white");
       $(timeSelector).html('');
       $(messageSelector).html(message);

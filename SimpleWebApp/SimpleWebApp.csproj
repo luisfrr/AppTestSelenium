@@ -7,32 +7,24 @@
 
   <ItemGroup>
     <Content Remove="bundleconfig.json" />
-    <Content Remove="wwwroot\js\Modal.min.js" />
-    <Content Remove="wwwroot\js\Modal.min.js.map" />
     <Content Remove="wwwroot\js\site.min.js" />
-    <Content Remove="wwwroot\js\site.min.js.map" />
-    <Content Remove="wwwroot\js\Toast.min.js" />
   </ItemGroup>
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\js\Modal.min.js" />
-    <_ContentIncludedByDefault Remove="wwwroot\js\Modal.min.js.map" />
     <_ContentIncludedByDefault Remove="wwwroot\js\site.min.js" />
-    <_ContentIncludedByDefault Remove="wwwroot\js\site.min.js.map" />
     <_ContentIncludedByDefault Remove="wwwroot\js\Toast.min.js" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="bundleconfig.json" />
-    <None Include="wwwroot\js\Modal.min.js" />
-    <None Include="wwwroot\js\Modal.min.js.map" />
     <None Include="wwwroot\js\site.min.js" />
-    <None Include="wwwroot\js\site.min.js.map" />
-    <None Include="wwwroot\js\Toast.min.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
     <PackageReference Include="Enums.NET" Version="4.0.0" />
+    <PackageReference Include="FluentValidation" Version="10.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.3" />
@@ -52,6 +44,10 @@
     <None Update="BD-SimpleWebApp.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Catalogs\Data\" />
   </ItemGroup>
 
 </Project>
