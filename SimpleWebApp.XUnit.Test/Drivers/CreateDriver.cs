@@ -14,24 +14,24 @@ namespace SimpleWebApp.XUnit.Test.Drivers
     private static IConfiguration _configuration = AppSettings.GetConfiguration();
     public CreateDriver() { }
 
-    public static IWebDriver GetDriver()
-    {
-      IWebDriver driver;
-      string browser = string.Empty;
+    //public static IWebDriver GetDriver()
+    //{
+    //  IWebDriver driver;
+    //  string browser = string.Empty;
 
-      try
-      {
-        browser = _configuration.GetSection("Browser").Value.ToString();
-      }
-      catch (Exception)
-      {
+    //  try
+    //  {
+    //    browser = _configuration.GetSection("Browser").Value.ToString();
+    //  }
+    //  catch (Exception)
+    //  {
 
-      }
+    //  }
 
-      driver = WebDriverFactory.CreateWebDriver(browser);
+    //  driver = WebDriverFactory.CreateWebDriver(browser);
 
-      return driver;
-    }
+    //  return driver;
+    //}
 
   }
 }

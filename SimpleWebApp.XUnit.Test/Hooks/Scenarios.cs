@@ -1,6 +1,6 @@
-using log4net;
 using OpenQA.Selenium;
 using SimpleWebApp.XUnit.Test.Drivers;
+using SimpleWebApp.XUnit.Test.Functions;
 using System;
 using System.IO;
 using System.Text;
@@ -8,7 +8,7 @@ using TechTalk.SpecFlow;
 
 namespace SimpleWebApp.XUnit.Test.Hooks
 {
-  [Binding]
+  //[Binding]
   public sealed class Scenarios
   {
     private readonly ScenarioContext _scenarioContext;
@@ -22,7 +22,8 @@ namespace SimpleWebApp.XUnit.Test.Hooks
     [BeforeScenario]
     public void BeforeScenario()
     {
-      driver = CreateDriver.GetDriver();
+      Console.WriteLine(string.Format("Scenario: {0}", _scenarioContext.ScenarioInfo.Title));
+      driver = WebDriverFactory.GetDriver();
     }
 
     [AfterScenario]
@@ -30,7 +31,7 @@ namespace SimpleWebApp.XUnit.Test.Hooks
     {
       if (_scenarioContext.TestError != null)
       {
-        //TakeScreenshot(_driver, scenarioContext);
+        //TakeScreenshot(driver);
       }
       driver.Quit();
     }
@@ -43,7 +44,7 @@ namespace SimpleWebApp.XUnit.Test.Hooks
                                             _scenarioContext.ScenarioInfo.Title,
                                             DateTime.Now.ToString("yyyyMMdd_HHmmss"));
 
-        var artifactDirectory = Path.Combine(Directory.GetCurrentDirectory(), "screenshots");
+        var artifactDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Resources/ScreenShots");
 
         if (!Directory.Exists(artifactDirectory))
           Directory.CreateDirectory(artifactDirectory);

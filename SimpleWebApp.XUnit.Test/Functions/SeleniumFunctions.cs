@@ -26,6 +26,7 @@ namespace SimpleWebApp.XUnit.Test.Functions
     public string elementText = string.Empty;
 
     public const int EXPLICIT_TIMEOUT = 15;
+    public const int IMPLICIT_TIMEOUT = 15;
     public bool isDisplayed = false;
 
     // Page Path
@@ -139,17 +140,24 @@ namespace SimpleWebApp.XUnit.Test.Functions
     public void ClickJSElement(string element)
     {
       By selectorElement = GetCompleteElement(element);
-      IJavaScriptExecutor jse = (IJavaScriptExecutor)_driver;
+      //IJavaScriptExecutor jse = (IJavaScriptExecutor)_driver;
+
       // Da clic en un elemento
-      jse.ExecuteScript("arguments[0].click()", _driver.FindElement(selectorElement));
+      //jse.ExecuteScript("arguments[0].click()", _driver.FindElement(selectorElement));
+      _driver.FindElement(selectorElement).Click();
     }
 
     public void SetElementWithText(string element, string text)
     {
       By selectorElement = GetCompleteElement(element);
-      IJavaScriptExecutor jse = (IJavaScriptExecutor)_driver;
+      //IJavaScriptExecutor jse = (IJavaScriptExecutor)_driver;
       // Se agrega texto a un elemento
       _driver.FindElement(selectorElement).SendKeys(text);
+    }
+
+    public void SubmitFormButton (string buttonElement)
+    {
+      
     }
 
     public void CheckPartialTextElementPresent(string element, string text)
@@ -200,11 +208,14 @@ namespace SimpleWebApp.XUnit.Test.Functions
       LoadListElements();
 
       _driver.Navigate().GoToUrl(page.Url);
+    }
 
-      //WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(EXPLICIT_TIMEOUT));
+    public void LoadPageDomInformation(string pageName)
+    {
+      var page = GetDataPage(pageName);
 
-      //wait.Until(webDriver => ((IJavaScriptExecutor)webDriver)
-      //  .ExecuteScript("return document.readyState").Equals("complete"));
+      filePageName = page.PageDomInformation;
+      LoadListElements();
     }
   }
 }

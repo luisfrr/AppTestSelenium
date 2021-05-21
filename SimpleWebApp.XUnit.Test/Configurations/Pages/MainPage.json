@@ -18,5 +18,15 @@
     "Name": "Profile",
     "GetFieldBy": "xpath",
     "ValueToFind": "//a[contains(@href, '/Identity/Account/Manage')]"
+  },
+  {
+    "Name": "Catalog Menu",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//a[contains(text(),'Catalogs')]"
+  },
+  {
+    "Name": "Beers Catalog",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//a[contains(text(),'Beers')]"
   }
 ]

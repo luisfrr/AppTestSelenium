@@ -83,11 +83,11 @@ namespace SimpleWebApp.XUnit.Test.Features
         [Xunit.SkippableFactAttribute(DisplayName="Register an existing user")]
         [Xunit.TraitAttribute("FeatureTitle", "Examples")]
         [Xunit.TraitAttribute("Description", "Register an existing user")]
-        [Xunit.TraitAttribute("Category", "register")]
+        [Xunit.TraitAttribute("Category", "test")]
         public virtual void RegisterAnExistingUser()
         {
             string[] tagsOfScenario = new string[] {
-                    "register"};
+                    "test"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Register an existing user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
@@ -136,11 +136,11 @@ namespace SimpleWebApp.XUnit.Test.Features
         [Xunit.SkippableFactAttribute(DisplayName="Login with correct credentials")]
         [Xunit.TraitAttribute("FeatureTitle", "Examples")]
         [Xunit.TraitAttribute("Description", "Login with correct credentials")]
-        [Xunit.TraitAttribute("Category", "login")]
+        [Xunit.TraitAttribute("Category", "test")]
         public virtual void LoginWithCorrectCredentials()
         {
             string[] tagsOfScenario = new string[] {
-                    "login"};
+                    "test"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login with correct credentials", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 14
@@ -188,11 +188,11 @@ namespace SimpleWebApp.XUnit.Test.Features
         [Xunit.SkippableFactAttribute(DisplayName="Login with incorrect credentials")]
         [Xunit.TraitAttribute("FeatureTitle", "Examples")]
         [Xunit.TraitAttribute("Description", "Login with incorrect credentials")]
-        [Xunit.TraitAttribute("Category", "login")]
+        [Xunit.TraitAttribute("Category", "test")]
         public virtual void LoginWithIncorrectCredentials()
         {
             string[] tagsOfScenario = new string[] {
-                    "login"};
+                    "test"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login with incorrect credentials", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 23

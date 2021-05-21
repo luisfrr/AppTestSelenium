@@ -1,0 +1,32 @@
+[
+  {
+    "Name": "Add Beer Button",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//button[contains(.,' Add Beer')]"
+  },
+  {
+    "Name": "Brand Modal Form",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//input[@id='Brand']"
+  },
+  {
+    "Name": "Name Modal Form",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//input[@id='Name']"
+  },
+  {
+    "Name": "Alcohol Modal Form",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//input[@id='Alcohol']"
+  },
+  {
+    "Name": "Save Modal Button",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//button[@id='modalAction_Save']"
+  },
+  {
+    "Name": "Beer Validation",
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//div[@id='BeerValidator']/ul/li"
+  }
+]

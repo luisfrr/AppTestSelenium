@@ -13,5 +13,10 @@
     "Name": "Login",
     "Url": "https://simplewebappselenium.azurewebsites.net/Identity/Account/Login",
     "PageDomInformation": "LoginPage.json"
+  },
+  {
+    "Name": "Beer Catalog",
+    "Url": "https://simplewebappselenium.azurewebsites.net/Catalogs/Beer/Index",
+    "PageDomInformation": "BeersCatalogPage.json"
   }
 ]

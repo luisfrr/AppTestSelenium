@@ -1,4 +1,5 @@
 using log4net;
+using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
@@ -10,9 +11,30 @@ namespace SimpleWebApp.XUnit.Test.Drivers
 {
   public class WebDriverFactory
   {
-    private WebDriverFactory() { }
+    private static IConfiguration _configuration = AppSettings.GetConfiguration();
 
-    public static IWebDriver CreateWebDriver(string browser)
+    public WebDriverFactory() { }
+
+    public static IWebDriver GetDriver()
+    {
+      IWebDriver driver = null;
+      string browser = string.Empty;
+
+      try
+      {
+        browser = _configuration.GetSection("Browser").Value.ToString();
+
+        driver = WebDriverFactory.CreateWebDriver(browser);
+      }
+      catch (Exception ex)
+      {
+        throw new Exception("GetDriver", ex);
+      }
+
+      return driver;
+    }
+
+    private static IWebDriver CreateWebDriver(string browser)
     {
       IWebDriver driver;
 
@@ -26,10 +48,11 @@ namespace SimpleWebApp.XUnit.Test.Drivers
       }
       else
       {
-        return null;
+        throw new Exception("Driver Not Created - Browser Not Found");
       }
 
       driver.Manage().Window.Maximize();
+      driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
       return driver;
     }
 
