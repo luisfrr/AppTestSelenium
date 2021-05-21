@@ -32,17 +32,10 @@
                   <b>Filter options</b>
                 </button>
               </h2>
-              <div id="accordion-filters" class="accordion-collapse collapse hide" aria-labelledby="accordion-header-filters" data-bs-parent="filters">
+              <div id="accordion-filters" class="accordion-collapse collapse show" aria-labelledby="accordion-header-filters" data-bs-parent="filters">
                 <div class="accordion-body">
 
                   <div class="row align-items-end" id="divFilters">
-
-                    <div class="col-3">
-                      <div class="form-group">
-                        <label for="NameFilter" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="NameFilter">
-                      </div>
-                    </div>
 
                     <div class="col-3">
                       <div class="form-group">
@@ -51,14 +44,21 @@
                       </div>
                     </div>
 
+                    <div class="col-3">
+                      <div class="form-group">
+                        <label for="NameFilter" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="NameFilter">
+                      </div>
+                    </div>
+
                     <div class="col-2 d-flex justify-content-end">
                       <button type="button" class="btn btn-outline-dark" onclick="Beer.ClearFilter()"
-                               data-bs-toggle="tooltip" data-bs-placement="top" title="Clear Filters">
+                              data-bs-toggle="tooltip" data-bs-placement="top" title="Clear Filters">
                         <i class="fa fa-eraser"></i>
                       </button>
                       <button type="button" class="btn btn-outline-primary" onclick="Beer.Search()"
-                               data-bs-toggle="tooltip" data-bs-placement="top" title="Filter"
-                                style="margin-left:16px !important;">
+                              data-bs-toggle="tooltip" data-bs-placement="top" title="Filter"
+                              style="margin-left:16px !important;">
                         <i class="fa fa-filter"></i>
                       </button>
                     </div>

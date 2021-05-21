@@ -38,14 +38,14 @@ var Beer = function () {
         visible: false
       },
       {
-        data: "name",
-        autoWidth: true,
-        title: "Name",
-      },
-      {
         data: "brand",
         autoWidth: true,
         title: "Brand",
+      },
+      {
+        data: "name",
+        autoWidth: true,
+        title: "Name",
       },
       {
         data: "alcohol",
