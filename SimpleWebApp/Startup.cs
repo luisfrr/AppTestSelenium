@@ -28,8 +28,9 @@ namespace SimpleWebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
-                    Configuration.GetConnectionString("SqliteConnection")));
+                options.UseSqlite(Configuration.GetConnectionString("SqliteConnection")));
+            services.AddDbContext<SqlSeverDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddDefaultIdentity<IdentityUser>(options =>
             {
